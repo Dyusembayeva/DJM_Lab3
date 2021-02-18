@@ -143,15 +143,30 @@ public class formthird extends javax.swing.JFrame {
         for (int i = 0; i < jTable1.getRowCount(); i++) {
             for (int j = 0; j < jTable1.getColumnCount(); j++) {
                 if (Integer.parseInt(jTable1.getValueAt(i, j).toString()) < 0) {
-                count = count+1;   
+                    count = count + 1;
                 }
             }
         }
         max2 = max1 + count;
         min2 = min1 + count;
-                
-        jLabel_MAX.setText("Кол-во отриц. эл-ов: " + count + ";" +
-                " Новый макс элемент: " + max2 + ";" + " Новый мин элемент: " + min2 + ".");
+
+        for (int i = 0; i < jTable1.getRowCount(); i++) {
+            for (int j = 0; j < jTable1.getColumnCount(); j++) {
+                if (Integer.parseInt(jTable1.getValueAt(i, j).toString()) == max1) {
+                    jTable1.setValueAt(max2, i, j);
+                }
+            }
+        }
+
+        for (int i = 0; i < jTable1.getRowCount(); i++) {
+            for (int j = 0; j < jTable1.getColumnCount(); j++) {
+                if (Integer.parseInt(jTable1.getValueAt(i, j).toString()) < min2) {
+                    jTable1.setValueAt(min2, i, j);
+                }
+            }
+        }
+
+        jLabel_MAX.setText("Кол-во отриц. эл-ов: " + count + ";" + " Новый макс элемент: " + max2 + ";" + " Новый мин элемент: " + min2 + ".");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
